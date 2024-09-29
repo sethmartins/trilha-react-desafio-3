@@ -1,5 +1,5 @@
 import { useNavigate  } from "react-router-dom";
-import { MdEmail, MdLock } from 'react-icons/md'
+import {MdOutlinePersonAdd, MdEmail, MdLock } from 'react-icons/md'
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
@@ -32,6 +32,7 @@ const Cadastro = () => {
             alert('Usuário ou senha inválido')
         }catch(e){
             //TODO: HOUVE UM ERRO
+            alert('Erro desconhecido')
         }
     };
     const navigateToLogin = () => {
@@ -52,7 +53,7 @@ const Cadastro = () => {
                 <TitleLogin>Comece Agora grátis</TitleLogin>
                 <SubtitleLogin>Crie sua conta e make the change._</SubtitleLogin>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input placeholder="Nome Completo" leftIcon={<MdEmail />} name="nomeCompleto"  control={control} />
+                    <Input placeholder="Nome Completo" leftIcon={<MdOutlinePersonAdd />} name="nomeCompleto"  control={control} />
                     {errors.nomeCompleto && <span>Nome completo é obrigatório</span>}
                     <Input placeholder="E-mail" leftIcon={<MdEmail />} name="email"  control={control} />
                     {errors.email && <span>E-mail é obrigatório</span>}
@@ -64,10 +65,12 @@ const Cadastro = () => {
                     <DescritivoText>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</DescritivoText>
                </Row>
                 <Row>
-                    <JatenhoContaText>Já tenho Conta.  
-                        <Logintext type='button' onClick={navigateToLogin}>Fazer Login. </Logintext>  
-                    </JatenhoContaText> 
-                </Row>
+                    <JatenhoContaText>Já tenho Conta.  <Logintext type='button' onClick={navigateToLogin}>Fazer Login. </Logintext> 
+                    
+                
+                    </JatenhoContaText>
+                    </Row>
+                    
                 </Wrapper>                
             </Column>
         </Container>

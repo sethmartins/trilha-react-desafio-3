@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
     gap: 0px;
     opacity: 0px;
 
-    max-width: 300px;
+    max-width: 400px;
 `
 
 export const Column = styled.div`
@@ -118,7 +118,7 @@ opacity: 0px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 19px;
     margin-top: 20px;
 ` 
@@ -127,25 +127,25 @@ export const JatenhoContaText =  styled.p`
     width: 185px;
     height: 19px;
     top: 584px;
-    left: 750px;
+    left: 50px;
     gap: 0px;
     opacity: 0px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 19.07px;
 `
 
 export const Logintext =  styled.span`
-    width: 85px;
+    width: 185px;
     height: 19px;
     top: 584px;
-    left: 750px;
+    left: 50px;
     gap: 0px;
     opacity: 0px;
     font-family: Open Sans;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 19.07px;
     text-align: left;
