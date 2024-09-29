@@ -4,14 +4,14 @@ import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { api } from '../../services/api';
-import React from 'react'
+
 
 import { useForm } from "react-hook-form";
 
 
-import { Container, Title, Column, TitleLogin, SubtitleLogin, EsqueciText, CriarText, Row, Wrapper } from './styles';
+import  {DescritivoText, Logintext, JatenhoContaText, Container, Title, Column, TitleLogin, SubtitleLogin,  Row, Wrapper } from './styles';
 
-const Login = () => {
+const Cadastro = () => {
 
     const navigate = useNavigate()
 
@@ -22,10 +22,10 @@ const Login = () => {
 
     const onSubmit = async (formData) => {
         try{
-            const {data} = await api.get(`/users?email=${formData.email}&senha=${formData.senha}`);
+            const {data} = await api.post('/users',formData);
             
-            if(data.length && data[0].id){
-                navigate('/feed') 
+            if(data.id){
+                navigate('/login') 
                 return
             }
 
@@ -33,6 +33,9 @@ const Login = () => {
         }catch(e){
             //TODO: HOUVE UM ERRO
         }
+    };
+    const navigateToLogin = () => {
+        navigate('/login');
     };
 
     console.log('errors', errors);
@@ -46,23 +49,29 @@ const Login = () => {
             </Column>
             <Column>
                 <Wrapper>
-                <TitleLogin>Faça seu cadastro</TitleLogin>
-                <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
+                <TitleLogin>Comece Agora grátis</TitleLogin>
+                <SubtitleLogin>Crie sua conta e make the change._</SubtitleLogin>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <Input placeholder="Nome Completo" leftIcon={<MdEmail />} name="nomeCompleto"  control={control} />
+                    {errors.nomeCompleto && <span>Nome completo é obrigatório</span>}
                     <Input placeholder="E-mail" leftIcon={<MdEmail />} name="email"  control={control} />
                     {errors.email && <span>E-mail é obrigatório</span>}
                     <Input type="password" placeholder="Senha" leftIcon={<MdLock />}  name="senha" control={control} />
                     {errors.senha && <span>Senha é obrigatório</span>}
-                    <Button title="Entrar" variant="secondary" type="submit"/>
+                    <Button title="Criar minha conta" variant="secondary" type="submit"/>
                 </form>
                 <Row>
-                    <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText>Criar Conta</CriarText>
+                    <DescritivoText>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</DescritivoText>
+               </Row>
+                <Row>
+                    <JatenhoContaText>Já tenho Conta.  
+                        <Logintext type='button' onClick={navigateToLogin}>Fazer Login. </Logintext>  
+                    </JatenhoContaText> 
                 </Row>
-                </Wrapper>
+                </Wrapper>                
             </Column>
         </Container>
     </>)
 }
 
-export { Login }
+export { Cadastro }
